@@ -13,4 +13,9 @@ class Track extends Model
         // GenreId is the foreign key column
         return $this->belongsTo('App\Genre', 'GenreId');
     }
+
+    public function album(){
+        // AlbumId is the foreign key column
+        return $this->belongsTo('App\Album', 'AlbumId');
+    }
 }

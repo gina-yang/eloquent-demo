@@ -4,6 +4,9 @@ use App\Artist;
 use App\Track;
 use App\Genre;
 use App\Album;
+use App\Customer;
+use App\Invoice;
+use App\InvoiceItem;
 
 Route::get('/eloquent', function() {
     // QUERYING
@@ -39,9 +42,17 @@ Route::get('/eloquent', function() {
 
     // return Track::find(1837); // Seek & Destroy
     // return Track::find(1837)->genre; // Metal
-    return Genre::find(3)->tracks; // 3 = Metal
-    // $metal = Genre::where('Name', '=', 'Metal')->first();
-    // return $metal->tracks;
+    // return Genre::find(3)->tracks; // 3 = Metal
+
+    // EAGER LOADING
+    // $tracks = Track::with(['genre', 'album'])
+    //     ->where('UnitPrice', '>', 0.99)
+    //     ->orderBy('Name')
+    //     ->get();
+
+    // return view('eloquent', [
+    //     'tracks' => $tracks
+    // ]);
 
 
 });
