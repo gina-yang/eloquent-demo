@@ -55,8 +55,26 @@ Route::get('/eloquent', function() {
     //     'tracks' => $tracks
     // ]);
     
-    return Playlist::all();
+    // RELATIONSHIPS: MANY TO MANY
+    // return Playlist::all();
+    // return Playlist::find(17); // Heavy Metal Classic
+    // return Playlist::find(17)->tracks;
+    // return Track::find(1837)->playlists; // Seek and Destroy
 
+    // UPDATING A BELONGS TO RELATIONSHIP
+    // $track = Track::find(1837); // Seek and Destroy
+    // $track->genre()->associate(Genre::find(1));
+    // $track->save();
+    // return $track;
+
+    // REMOVING FROM A MANY TO MANY RELATIONSHIP
+    // Playlist::find(17)->tracks()->detach(Track::find(3290));
+    // return Playlist::find(17)->tracks;
+
+    // ADDING TO A MANY TO MANY RELATIONSHIP
+    Playlist::find(17)->tracks()->attach(Track::find(3290));
+    return Playlist::find(17)->tracks;
+    
 });
 
 Route::get('/', function () {
