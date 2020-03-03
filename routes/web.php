@@ -7,6 +7,7 @@ use App\Album;
 use App\Customer;
 use App\Invoice;
 use App\InvoiceItem;
+use App\Playlist;
 
 Route::get('/eloquent', function() {
     // QUERYING
@@ -53,7 +54,8 @@ Route::get('/eloquent', function() {
     // return view('eloquent', [
     //     'tracks' => $tracks
     // ]);
-
+    
+    return Playlist::all();
 
 });
 
