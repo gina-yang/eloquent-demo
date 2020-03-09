@@ -79,7 +79,7 @@ Route::get('/eloquent', function() {
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/invoices', 'InvoiceController@index');
 Route::get('/invoices/{id}', 'InvoiceController@show');
@@ -103,3 +103,16 @@ Route::post('/playlists/{id}/delete', 'PlaylistController@destroy');
 Route::get('/tracks', 'TrackController@index');
 Route::get('/tracks/{id}/add-to-playlist', 'TrackController@add');
 Route::post('/tracks', 'TrackController@store');
+
+Route::get('/signup', 'RegistrationController@showRegistrationForm');
+Route::post('/signup', 'RegistrationController@register');
+// Route::get('/profile', 'ProfileController@index')->name('profile')->middleware(['auth']);
+Route::get('/logout', 'LogoutController');
+Route::get('login', 'LoginController@showLoginForm')->name('login');
+Route::post('login', 'LoginController@login');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+});
+
+
