@@ -14,12 +14,12 @@ class PlaylistController extends Controller
             'playlists' => $playlists
         ]);
     }
-    public function show($id){
+    public function show(Playlist $playlist){
         $playlistCount = DB::table('playlists')->where('PlaylistId', '=', $id)->count();
         if($playlistCount === 0)
             return view('playlists.error');
         
-        $playlist = DB::table('playlists')->where('PlaylistId', '=', $id)->first();
+        
         
         $tracks = DB::table('tracks')
             ->select(

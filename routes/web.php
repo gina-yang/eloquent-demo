@@ -89,7 +89,7 @@ Route::get('/albums/create', 'AlbumController@create');
 Route::post('/albums', 'AlbumController@store');
 
 Route::get('/playlists', 'PlaylistController@index')->name('playlists');
-Route::get('/playlists/{id}', 'PlaylistController@show')->where('id', '[0-9]+')->name('specplaylist');
+Route::get('/playlists/{playlist}', 'PlaylistController@show')->where('id', '[0-9]+')->name('specplaylist');
 
 Route::get('/playlists/create', 'PlaylistController@create');
 Route::post('/playlists', 'PlaylistController@store');
